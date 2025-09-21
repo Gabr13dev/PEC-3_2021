@@ -143,6 +143,13 @@
       return "text-gray-700";
     }
 
+    function fotoClass(v) {
+      const norm = v.toUpperCase();
+      if (norm === "SIM") return "border-[0.1rem] border-red-500";
+      if (norm === "NÃO" || norm === "NAO") return "border-[0.1rem] border-green-500";
+      return "text-gray-700";
+    }
+
     function renderTable(rows) {
       tableBody.innerHTML = "";
       if (!rows.length) {
@@ -157,7 +164,7 @@
         tr.innerHTML = `
           <td class="px-4 py-2">
             <div class="flex items-center gap-3">
-              <img src="${r.foto}" class="h-10 w-10 rounded-full object-cover bg-gray-200" />
+              <img src="${r.foto}" class="h-10 w-10 rounded-full object-cover bg-gray-200 ${fotoClass(r.voto)}" />
               <span>${r.nome}</span>
             </div>
           </td>
@@ -177,7 +184,7 @@
         card.className = "flex items-center gap-3 p-3 border rounded-lg shadow-sm bg-white";
 
         card.innerHTML = `
-      <img src="${r.foto}" class="h-12 w-12 rounded-full object-cover" />
+      <img src="${r.foto}" class="h-12 w-12 rounded-full object-cover ${fotoClass(r.voto)}" />
       <div class="flex-1">
         <p class="font-semibold text-gray-900">${r.nome}</p>
         <p class="text-xs text-gray-500">${r.partido}</p>
