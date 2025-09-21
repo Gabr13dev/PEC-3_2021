@@ -85,7 +85,7 @@
   </div>
 
   <script>
-    const API = "https://dadosabertos.camara.leg.br/api/v2/votacoes/2270800-160/votos";
+    const API = ".\\votos.xml";
     const $ = sel => document.querySelector(sel);
 
     const tableBody = $("#tableBody");
@@ -155,7 +155,7 @@
         rawData = Array.from(votos).map(v => {
           const nome = v.getElementsByTagName("nome")[0]?.textContent || "";
           const partido = v.getElementsByTagName("siglaPartido")[0]?.textContent || "";
-          const foto = v.getElementsByTagName("urlFoto")[0]?.textContent || "";
+          const foto = ".\\fotos\\" + v.getElementsByTagName("id")[0]?.textContent + ".jpg" || "";
           const voto = v.getElementsByTagName("tipoVoto")[0]?.textContent || "";
           partidos.add(partido);
           tiposVoto.add(voto);
