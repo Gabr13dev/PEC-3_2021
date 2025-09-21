@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Votação PEC 3/2021</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900">
+
+  <div class="text-center py-4 lg:px-4">
+  <div class="p-2 bg-indigo-800 items-center text-indigo-100 leading-none sm:rounded-full flex sm:inline-flex cursor-pointer" role="alert" id="openModal">
+    <span class="flex rounded-full bg-white uppercase px-2 py-1 text-xs font-bold mr-3"><svg class="fill-current w-5 h-5 mr-3 flex-shrink-0 text-blue-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+        <path d="M12.432 0c1.34 0 2.01.912 2.01 1.957 0 1.305-1.164 2.512-2.679 2.512-1.269 0-2.009-.75-1.974-1.99C9.789 1.436 10.67 0 12.432 0zM8.309 20c-1.058 0-1.833-.652-1.093-3.524l1.214-5.092c.211-.814.246-1.141 0-1.141-.317 0-1.689.562-2.502 1.117l-.528-.88c2.572-2.186 5.531-3.467 6.801-3.467 1.057 0 1.233 1.273.705 3.23l-1.391 5.352c-.246.945-.141 1.271.106 1.271.317 0 1.357-.392 2.379-1.207l.6.814C12.098 19.02 9.365 20 8.309 20z"/>
+      </svg> </span>
+    <span class="font-semibold mr-2 text-left flex-auto">Veja mais informações sobre a PEC e a Lei de Acesso a Dados.</span>
+    <svg class="fill-current opacity-75 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z"/></svg>
+  </div>
+  </div>
+
+  <div class="max-w-6xl mx-auto px-4 py-8">
+    <!-- Header -->
+    <div class="mb-6 text-center md:text-left">
+      <h1 class="text-2xl font-bold">Votação – PEC 3/2021</h1>
+      <p class="text-sm text-gray-600">Também conhecida como <span class="font-medium">PEC das Prerrogativas</span> ou <span class="font-medium">PEC da Impunidade</span> popularmente</p>
+    </div>
+
+    <!-- Filtros -->
+    <div class="bg-white rounded-lg shadow p-4 mb-6">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <input id="search" type="text" placeholder="Buscar deputado..."
+              class="rounded-lg border px-3 py-2 focus:ring-2 focus:ring-indigo-500 w-full"/>
+        <select id="partyFilter" class="rounded-lg border px-3 py-2 w-full">
+          <option value="">Todos os partidos</option>
+        </select>
+        <select id="voteFilter" class="rounded-lg border px-3 py-2 w-full">
+          <option value="">Todos os votos</option>
+        </select>
+      </div>
+    </div>
+
+
+    <!-- Tabela -->
+    <div class="overflow-x-auto bg-white rounded-lg shadow">
+      <table class="min-w-full text-sm">
+        <thead class="bg-gray-200">
+          <tr>
+            <th class="px-4 py-2 text-left">Deputado</th>
+            <th class="px-4 py-2 text-left">Partido</th>
+            <th class="px-4 py-2 text-left">Voto</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+      <div id="emptyState" class="hidden p-4 text-center text-gray-500">Nenhum resultado.</div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="infoModal" class="fixed inset-0 hidden items-center justify-center bg-black/50 z-50">
+    <div class="bg-white rounded-xl shadow-lg max-w-2xl w-full p-6 relative">
+      <button id="closeModal" class="absolute top-3 right-3 text-gray-500 hover:text-gray-700">✖</button>
+      <h2 class="text-xl font-bold mb-4">Informações sobre a PEC 3/2021 e Transparência</h2>
+
+      <div class="space-y-4 text-sm leading-relaxed">
+        <div class="p-3 border rounded-lg bg-gray-50">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded-full">Resumo gerado por IA</span>
+          </div>
+          <p><b>Resumo da PEC:</b> <br>Ela aumenta a proteção legal de deputados e senadores. <br>Só podem ser presos em flagrante de crime grave. <br><mark>Para serem processados, precisa de autorização da própria Casa (Câmara ou Senado), em votação secreta.</mark> <br>Se a autorização não for dada, o prazo do crime fica congelado até o fim do mandato. <br>Também dá foro privilegiado no STF a presidentes nacionais de partidos. <br><u>Na prática, deixa mais difícil processar políticos durante o mandato.</u></p>
+        </div>
+
+        <div class="p-3 border rounded-lg bg-gray-50">
+          <p><b>Sobre a PEC 3/2021:</b> oficialmente chamada de <b class="not-important">PEC das Prerrogativas</b>, apelidada de <b class="not-important">PEC da Blindagem</b>, e popularmente conhecida como <b class="very-important">PEC da Impunidade</b> nas redes sociais e outras mídias.</p>
+        </div>
+
+        <div class="p-3 border rounded-lg bg-gray-50">
+          <p><b>Fonte dos dados:</b> Todos os dados são consultados direto da API oficial da Câmara disponível em <a href="https://dadosabertos.camara.leg.br/api/v2" target="_blank" class="underline text-indigo-600">https://dadosabertos.camara.leg.br/api/v2</a>.</p>
+        </div>
+
+        <div class="p-3 border rounded-lg bg-gray-50">
+          <p><b>Lei de Acesso à Informação (Lei 12.527/2011):</b> garante que qualquer cidadão tenha acesso a informações públicas. O voto dos parlamentares é dado em função do cargo e, portanto, é <b>ato público</b>. Por isso, divulgar como cada deputado votou não é crime — é um dever de transparência previsto na Constituição.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const API = "https://dadosabertos.camara.leg.br/api/v2/votacoes/2270800-160/votos";
+    const $ = sel => document.querySelector(sel);
+
+    const tableBody = $("#tableBody");
+    const searchInput = $("#search");
+    const partyFilter = $("#partyFilter");
+    const voteFilter = $("#voteFilter");
+    const emptyState = $("#emptyState");
+
+    let rawData = [];
+
+    function voteClass(v) {
+      const norm = v.toUpperCase();
+      if (norm === "SIM") return "text-red-600 font-bold";
+      if (norm === "NÃO" || norm === "NAO") return "text-green-600 font-bold";
+      return "text-gray-700";
+    }
+
+    function renderTable(rows) {
+      tableBody.innerHTML = "";
+      if (!rows.length) {
+        emptyState.classList.remove("hidden");
+        return;
+      }
+      emptyState.classList.add("hidden");
+      rows.forEach(r => {
+        const tr = document.createElement("tr");
+        tr.className = "border-b last:border-0 hover:bg-gray-50";
+
+        tr.innerHTML = `
+          <td class="px-4 py-2">
+            <div class="flex items-center gap-3">
+              <img src="${r.foto}" class="h-10 w-10 rounded-full object-cover bg-gray-200" />
+              <span>${r.nome}</span>
+            </div>
+          </td>
+          <td class="px-4 py-2">${r.partido}</td>
+          <td class="px-4 py-2"><span class="${voteClass(r.voto)}">${r.voto}</span></td>
+        `;
+        tableBody.appendChild(tr);
+      });
+    }
+
+    function applyFilters() {
+      const q = searchInput.value.toLowerCase();
+      const p = partyFilter.value;
+      const v = voteFilter.value;
+      const filtered = rawData.filter(r => {
+        const matchName = r.nome.toLowerCase().includes(q);
+        const matchParty = !p || r.partido === p;
+        const matchVote = !v || r.voto === v;
+        return matchName && matchParty && matchVote;
+      });
+      renderTable(filtered);
+    }
+
+    async function load() {
+      try {
+        const resp = await fetch(API, { headers: { "Accept": "application/xml" } });
+        const xmlText = await resp.text();
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(xmlText, "application/xml");
+
+        const votos = xmlDoc.getElementsByTagName("voto_");
+        const partidos = new Set();
+        const tiposVoto = new Set();
+
+        rawData = Array.from(votos).map(v => {
+          const nome = v.getElementsByTagName("nome")[0]?.textContent || "";
+          const partido = v.getElementsByTagName("siglaPartido")[0]?.textContent || "";
+          const foto = v.getElementsByTagName("urlFoto")[0]?.textContent || "";
+          const voto = v.getElementsByTagName("tipoVoto")[0]?.textContent || "";
+          partidos.add(partido);
+          tiposVoto.add(voto);
+          return { nome, partido, foto, voto };
+        }).sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR'));
+
+        // Preencher filtros
+        partyFilter.innerHTML = `<option value="">Todos os partidos</option>` +
+          [...partidos].sort().map(p => `<option value="${p}">${p}</option>`).join("");
+        voteFilter.innerHTML = `<option value="">Todos os votos</option>` +
+          [...tiposVoto].sort().map(v => `<option value="${v}">${v}</option>`).join("");
+
+        renderTable(rawData);
+      } catch (e) {
+        console.error("Erro ao carregar XML", e);
+      }
+    }
+
+    searchInput.addEventListener("input", applyFilters);
+    partyFilter.addEventListener("change", applyFilters);
+    voteFilter.addEventListener("change", applyFilters);
+
+    const modal = document.getElementById("infoModal");
+    const openBtn = document.getElementById("openModal");
+    const closeBtn = document.getElementById("closeModal");
+
+    function openModal() {
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+    }
+    function closeModal() {
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+    }
+
+    openBtn.addEventListener("click", openModal);
+    closeBtn.addEventListener("click", closeModal);
+
+    // Abrir modal automaticamente ao carregar
+    window.addEventListener("load", openModal);
+
+    load();
+  </script>
+
+  <style>
+    .not-important { color: rgb(153, 150, 150); }
+    .very-important { color: rgb(235, 59, 59); }
+  </style>
+</body>
+</html>
