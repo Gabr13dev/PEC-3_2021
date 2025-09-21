@@ -2,19 +2,24 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Votação PEC 3/2021</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 text-gray-900">
+<body class="bg-gray-100 text-gray-900 min-h-screen flex flex-col">
 
+  <!-- Callout -->
+   <div class="flex-1">
   <div class="text-center py-4 lg:px-4">
-  <div class="p-2 bg-indigo-800 items-center text-indigo-100 leading-none sm:rounded-full flex sm:inline-flex cursor-pointer" role="alert" id="openModal">
-    <span class="flex rounded-full bg-white uppercase px-2 py-1 text-xs font-bold mr-3"><svg class="fill-current w-5 h-5 mr-3 flex-shrink-0 text-blue-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-        <path d="M12.432 0c1.34 0 2.01.912 2.01 1.957 0 1.305-1.164 2.512-2.679 2.512-1.269 0-2.009-.75-1.974-1.99C9.789 1.436 10.67 0 12.432 0zM8.309 20c-1.058 0-1.833-.652-1.093-3.524l1.214-5.092c.211-.814.246-1.141 0-1.141-.317 0-1.689.562-2.502 1.117l-.528-.88c2.572-2.186 5.531-3.467 6.801-3.467 1.057 0 1.233 1.273.705 3.23l-1.391 5.352c-.246.945-.141 1.271.106 1.271.317 0 1.357-.392 2.379-1.207l.6.814C12.098 19.02 9.365 20 8.309 20z"/>
-      </svg> </span>
-    <span class="font-semibold mr-2 text-left flex-auto">Veja mais informações sobre a PEC e a Lei de Acesso a Dados.</span>
-    <svg class="fill-current opacity-75 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z"/></svg>
-  </div>
+    <div class="p-2 bg-indigo-800 items-center text-indigo-100 leading-none rounded-full flex inline-flex cursor-pointer" role="alert" id="openModal">
+      <span class="flex rounded-full bg-white uppercase px-2 py-1 text-xs font-bold mr-3">
+        <svg class="fill-current w-5 h-5 mr-3 flex-shrink-0 text-blue-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+          <path d="M12.432 0c1.34 0 2.01.912 2.01 1.957 0 1.305-1.164 2.512-2.679 2.512-1.269 0-2.009-.75-1.974-1.99C9.789 1.436 10.67 0 12.432 0zM8.309 20c-1.058 0-1.833-.652-1.093-3.524l1.214-5.092c.211-.814.246-1.141 0-1.141-.317 0-1.689.562-2.502 1.117l-.528-.88c2.572-2.186 5.531-3.467 6.801-3.467 1.057 0 1.233 1.273.705 3.23l-1.391 5.352c-.246.945-.141 1.271.106 1.271.317 0 1.357-.392 2.379-1.207l.6.814C12.098 19.02 9.365 20 8.309 20z"/>
+        </svg>
+      </span>
+      <span class="font-semibold mr-2 text-left flex-auto">Veja mais informações sobre a PEC.</span>
+      <svg class="fill-current opacity-75 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z"/></svg>
+    </div>
   </div>
 
   <div class="max-w-6xl mx-auto px-4 py-8">
@@ -38,22 +43,30 @@
       </div>
     </div>
 
+    <!-- Tabela no desktop -->
+    <table class="min-w-full text-sm md:table">
+      <thead class="bg-indigo-200 text-gray-700 text-xs uppercase">
+        <tr>
+          <th class="px-4 py-2 text-left">Deputado</th>
+          <th class="px-4 py-2 text-left">Partido</th>
+          <th class="px-4 py-2 text-left">Voto</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
 
-    <!-- Tabela -->
-    <div class="overflow-x-auto bg-white rounded-lg shadow">
-      <table class="min-w-full text-sm">
-        <thead class="bg-gray-200">
-          <tr>
-            <th class="px-4 py-2 text-left">Deputado</th>
-            <th class="px-4 py-2 text-left">Partido</th>
-            <th class="px-4 py-2 text-left">Voto</th>
-          </tr>
-        </thead>
-        <tbody id="tableBody"></tbody>
-      </table>
-      <div id="emptyState" class="hidden p-4 text-center text-gray-500">Nenhum resultado.</div>
-    </div>
+    <!-- Estado vazio -->
+    <div id="emptyState" class="hidden p-4 text-center text-gray-500">Nenhum resultado.</div>
   </div>
+  </div>
+
+
+    <footer id="footer" class="bg-indigo-800 w-full py-6 px-4 h-32 bottom-0 inset-x-0 bottom-0 mt-12">
+        <div class="text-center text-white">
+            <p>Desenvolvido por <a href="https://github.com/Gabr13dev">Gabriel de Almeida</a></p>
+            <p>2025 &copy; Todos direitos reservados</p>
+        </div>
+   </footer>
 
   <!-- Modal -->
   <div id="infoModal" class="fixed inset-0 hidden items-center justify-center bg-black/50 z-50">
@@ -74,7 +87,7 @@
         </div>
 
         <div class="p-3 border rounded-lg bg-gray-50">
-          <p><b>Fonte dos dados:</b> Todos os dados são consultados direto da API oficial da Câmara disponível em <a href="https://dadosabertos.camara.leg.br/api/v2" target="_blank" class="underline text-indigo-600">https://dadosabertos.camara.leg.br/api/v2</a>.</p>
+          <p><b>Fonte dos dados:</b> Todos os dados foram consultados diretamente da API oficial da Câmara disponível em <a href="https://dadosabertos.camara.leg.br/api/v2" target="_blank" class="underline text-indigo-600">https://dadosabertos.camara.leg.br/api/v2</a>. e salvos em cache para melhor perfomace</p>
         </div>
 
         <div class="p-3 border rounded-lg bg-gray-50">
@@ -85,7 +98,7 @@
   </div>
 
   <script>
-    const API = ".\\votos.xml";
+    const API = "./votos.xml";
     const $ = sel => document.querySelector(sel);
 
     const tableBody = $("#tableBody");
@@ -128,6 +141,27 @@
       });
     }
 
+function renderCards(rows) {
+  const cardsBody = document.getElementById("cardsBody");
+  cardsBody.innerHTML = "";
+
+  rows.forEach(r => {
+    const card = document.createElement("div");
+    card.className = "flex items-center gap-3 p-3 border rounded-lg shadow-sm bg-white";
+
+    card.innerHTML = `
+      <img src="${r.foto}" class="h-12 w-12 rounded-full object-cover" />
+      <div class="flex-1">
+        <p class="font-semibold text-gray-900">${r.nome}</p>
+        <p class="text-xs text-gray-500">${r.partido}</p>
+      </div>
+      <span class="${voteClass(r.voto)} text-sm">${r.voto}</span>
+    `;
+    cardsBody.appendChild(card);
+    });
+  }
+
+
     function applyFilters() {
       const q = searchInput.value.toLowerCase();
       const p = partyFilter.value;
@@ -139,6 +173,7 @@
         return matchName && matchParty && matchVote;
       });
       renderTable(filtered);
+      
     }
 
     async function load() {
@@ -155,7 +190,7 @@
         rawData = Array.from(votos).map(v => {
           const nome = v.getElementsByTagName("nome")[0]?.textContent || "";
           const partido = v.getElementsByTagName("siglaPartido")[0]?.textContent || "";
-          const foto = ".\\fotos\\" + v.getElementsByTagName("id")[0]?.textContent + ".jpg" || "";
+          const foto = "./fotos/" + v.getElementsByTagName("id")[0]?.textContent + ".jpg" || "";
           const voto = v.getElementsByTagName("tipoVoto")[0]?.textContent || "";
           partidos.add(partido);
           tiposVoto.add(voto);
